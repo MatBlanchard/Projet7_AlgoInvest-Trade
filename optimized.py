@@ -26,15 +26,14 @@ def get_combination(max_value, elements):
     return matrice[-1][-1], elements_selection
 
 
-with open("data/dataset_3.csv") as file:
+with open("data/dataset_2.csv") as file:
     reader = file.readlines()[1:]
     for row in reader:
         temp = row.split(",")
         cost = round(float(temp[1])*100)
-        if cost < 0:
-            cost = 0
-        profit = cost*(1+float(temp[2])/100)-cost
-        datas.append((temp[0], cost, profit))
+        if cost > 0:
+            profit = cost*float(temp[2])/100
+            datas.append((temp[0], cost, profit))
 profit, actions = get_combination(50000, datas)
 print("Actions: " + str([action[0] for action in actions]))
 print('Total cost = {:.2f}€'.format(sum([action[1]/100 for action in actions])))
