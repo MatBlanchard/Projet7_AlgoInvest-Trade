@@ -31,14 +31,19 @@ def read_datas():
         reader = file.readlines()[1:]
         for row in reader:
             split_row = row.split(",")
-            datas.append((split_row[0], float(split_row[1]), float(split_row[1]) * float(split_row[2]) / 100))
+            if float(split_row[1]) > 0 and float(split_row[2]) > 0:
+                cost = round(float(split_row[1]) * 100)
+                profit = float(split_row[1]) * float(split_row[2])
+                datas.append((split_row[0], cost, profit))
 
 
 def show_results():
-    profit, actions = get_combination(500, datas)
-    print("Actions: " + str([action[0] for action in actions]))
-    print('Total cost = {:.2f}€'.format(sum([action[1] for action in actions])))
-    print('Total profit = {:.2f}€'.format(profit))
+    profit, actions = get_combination(50000, datas)
+    print("Actions list:")
+    for action in actions:
+        print(action[0] + "\t | cost: " + str(action[1]/100) + "€\t | profit: " + str(action[2]/100) + "€")
+    print('\nTotal cost = {:.2f}€'.format(sum([action[1] for action in actions])/100))
+    print('Total profit = {:.2f}€'.format(profit/100))
     print('Solution found in {:}ms'.format(round(1000 * (time.time() - start))))
 
 
