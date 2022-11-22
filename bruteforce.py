@@ -21,13 +21,31 @@ def get_combination(max_value, elements, elements_selection=None):
         return sum([i[2] for i in elements_selection]), elements_selection
 
 
-with open("data/dataset_1.csv") as file:
-    reader = file.readlines()[1:]
-    for row in reader:
-        temp = row.split(",")
-        datas.append((temp[0], float(temp[1]), float(temp[1])*(1+float(temp[2])/100)-float(temp[1])))
-profit, actions = get_combination(500, datas)
-print("Actions: " + str([action[0] for action in actions]))
-print('Total cost = {:.2f}€'.format(sum([action[1] for action in actions])))
-print('Total profit = {:.2f}€'.format(profit))
-print('Solution found in {:}ms'.format(round(1000*(time.time() - start))))
+def read_datas():
+    with open(sys.argv[1]) as file:
+        reader = file.readlines()[1:]
+        for row in reader:
+            split_row = row.split(",")
+            datas.append((split_row[0], float(split_row[1]), float(split_row[1]) * float(split_row[2]) / 100))
+
+
+def show_results():
+    profit, actions = get_combination(500, datas)
+    print("Actions: " + str([action[0] for action in actions]))
+    print('Total cost = {:.2f}€'.format(sum([action[1] for action in actions])))
+    print('Total profit = {:.2f}€'.format(profit))
+    print('Solution found in {:}ms'.format(round(1000 * (time.time() - start))))
+
+
+if len(sys.argv) > 1:
+    temp = sys.argv[1].split(".")
+    if len(temp) > 1 and temp[1] == "csv":
+        try:
+            read_datas()
+            show_results()
+        except FileNotFoundError:
+            print("The file doesn't exists")
+    else:
+        print("The file must be a .csv")
+else:
+    print("You need to specify the path to the data file")
