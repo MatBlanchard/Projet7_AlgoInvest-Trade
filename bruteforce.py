@@ -34,7 +34,7 @@ def show_results():
     print("Actions list:")
     for action in actions:
         print(action[0] + "\t | cost: " + str(action[1]) + "€\t | profit: " + str(action[2]) + "€")
-    print('Total cost = {:.2f}€'.format(sum([action[1] for action in actions])))
+    print('\nTotal cost = {:.2f}€'.format(sum([action[1] for action in actions])))
     print('Total profit = {:.2f}€'.format(profit))
     print('Solution found in {:}ms'.format(round(1000 * (time.time() - start))))
 
