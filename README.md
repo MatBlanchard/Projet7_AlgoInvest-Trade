@@ -15,12 +15,12 @@ Sont fournis 3 jeux de données dans le répertoire data :
 - Deux jeux comportant 1000 actions chacun (dataset_2.csv et dataset_3.csv)
 
 ## Utilisation:
-- Pour utiliser l'algorithme de force brute utilisez :
+- Pour utiliser l'algorithme de force brute utilisez la commande :
 ```
 python bruteforce.py [chemin du fichier .csv]
 ```
 Attention, n'utilisez l'algorithme de force brute que sur le premier dataset (dataset_1.csv). En effet, si vous l'utilisez sur l'un des dataset comportant 1000 actions, le temps de calcul sera très largement supérieur à l'âge de l'univers. C'est donc très déconseillé.
-- Pour utiliser l'algorithme optimisé utilisez :
+- Pour utiliser l'algorithme optimisé utilisez la commande :
 ```
 python optimized.py [chemin du fichier .csv]
 ```
