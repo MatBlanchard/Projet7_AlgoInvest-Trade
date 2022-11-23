@@ -2,7 +2,7 @@ import time
 import sys
 
 start = time.time()
-datas = []
+data = []
 
 
 def get_combination(max_value, elements):
@@ -26,7 +26,7 @@ def get_combination(max_value, elements):
     return matrice[-1][-1], elements_selection
 
 
-def read_datas():
+def read_data():
     with open(sys.argv[1]) as file:
         reader = file.readlines()[1:]
         for row in reader:
@@ -34,11 +34,11 @@ def read_datas():
             if float(split_row[1]) > 0 and float(split_row[2]) > 0:
                 cost = round(float(split_row[1]) * 100)
                 profit = float(split_row[1]) * float(split_row[2])
-                datas.append((split_row[0], cost, profit))
+                data.append((split_row[0], cost, profit))
 
 
 def show_results():
-    profit, actions = get_combination(50000, datas)
+    profit, actions = get_combination(50000, data)
     print("Actions list:")
     for action in actions:
         print(action[0] + "\t | cost: " + str(action[1]/100) + "€\t | profit: " + str(action[2]/100) + "€")
@@ -51,7 +51,7 @@ if len(sys.argv) > 1:
     temp = sys.argv[1].split(".")
     if len(temp) > 1 and temp[1] == "csv":
         try:
-            read_datas()
+            read_data()
             show_results()
         except FileNotFoundError:
             print("The file doesn't exists")

@@ -3,7 +3,7 @@ import sys
 
 sys.setrecursionlimit(2000)
 start = time.time()
-datas = []
+data = []
 
 
 def get_combination(max_value, elements, elements_selection=None):
@@ -21,16 +21,16 @@ def get_combination(max_value, elements, elements_selection=None):
         return sum([i[2] for i in elements_selection]), elements_selection
 
 
-def read_datas():
+def read_data():
     with open(sys.argv[1]) as file:
         reader = file.readlines()[1:]
         for row in reader:
             split_row = row.split(",")
-            datas.append((split_row[0], float(split_row[1]), float(split_row[1]) * float(split_row[2]) / 100))
+            data.append((split_row[0], float(split_row[1]), float(split_row[1]) * float(split_row[2]) / 100))
 
 
 def show_results():
-    profit, actions = get_combination(500, datas)
+    profit, actions = get_combination(500, data)
     print("Actions list:")
     for action in actions:
         print(action[0] + "\t | cost: " + str(action[1]) + "€\t | profit: " + str(action[2]) + "€")
@@ -43,7 +43,7 @@ if len(sys.argv) > 1:
     temp = sys.argv[1].split(".")
     if len(temp) > 1 and temp[1] == "csv":
         try:
-            read_datas()
+            read_data()
             show_results()
         except FileNotFoundError:
             print("The file doesn't exists")
