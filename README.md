@@ -10,7 +10,7 @@ https://www.python.org/downloads/
 git clone https://github.com/MatBlanchard/Projet7_AlgoInvest-Trade.git
 ```
 ## Données:
-Sont fournis 3 jeux de données dans le répertoire data :
+Sont fournis, 3 jeux de données dans le répertoire data :
 - Un jeu comportant 20 actions (dataset_1.csv)
 - Deux jeux comportant 1000 actions chacun (dataset_2.csv et dataset_3.csv)
 
