@@ -24,3 +24,20 @@ Attention, n'utilisez l'algorithme de force brute que sur le premier dataset (da
 ```
 python optimized.py [chemin du fichier .csv]
 ```
+## Générer le rapport flake8
+- Créez un nouvel environnement virtuel :
+```
+python -m venv env
+```
+- Activez le.
+```
+env\scripts\activate
+```
+- Installez les packages.
+```
+pip install -r requirements.txt
+```
+- Enfin, tapez la commande:
+```
+flake8 --format=html --htmldir=flake-report
+```
