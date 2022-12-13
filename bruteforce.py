@@ -39,15 +39,16 @@ def show_results():
     print('Solution found in {:}ms'.format(round(1000 * (time.time() - start))))
 
 
-if len(sys.argv) > 1:
-    temp = sys.argv[1].split(".")
-    if len(temp) > 1 and temp[1] == "csv":
-        try:
-            read_data()
-            show_results()
-        except FileNotFoundError:
-            print("The file doesn't exists")
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        temp = sys.argv[1].split(".")
+        if len(temp) > 1 and temp[1] == "csv":
+            try:
+                read_data()
+                show_results()
+            except FileNotFoundError:
+                print("The file doesn't exists")
+        else:
+            print("The file must be a .csv")
     else:
-        print("The file must be a .csv")
-else:
-    print("You need to specify the path to the data file")
+        print("You need to specify the path to the data file")
